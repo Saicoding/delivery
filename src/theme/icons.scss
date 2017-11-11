@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'iconmoon';
+  src:  url('../assets/fonts/iconmoon.eot?2wus5i');
+  src:  url('../assets/fonts/iconmoon.eot?2wus5i#iefix') format('embedded-opentype'),
+    url('../assets/fonts/iconmoon.ttf?2wus5i') format('truetype'),
+    url('../assets/fonts/iconmoon.woff?2wus5i') format('woff'),
+    url('../assets/fonts/iconmoon.svg?2wus5i#iconmoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'iconmoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin makeIcon($arg, $val) {
+  .icon-#{$arg}:before ,
+  .ion-ios-icon-#{$arg}:before ,
+  .ion-ios-icon-#{$arg}-outline:before ,
+  .ion-md-icon-#{$arg}:before ,
+  .ion-md-icon-#{$arg}-outline:before  {
+    content: $val;
+    font-size: 26px;
+  }
+}
+
+@include makeIcon(snowy,"\e900" );
+@include makeIcon(snowy2,"\e901" );
+@include makeIcon(weather,"\e902" );
+@include makeIcon(cloudy,"\e903" );
+@include makeIcon(lightning,"\e904" );
+@include makeIcon(noun_1173337_cc,"\e905" );
+@include makeIcon(noun_1174740_cc,"\e906" );
+@include makeIcon(noun_1174962_cc,"\e907" );
+@include makeIcon(noun_1175150_cc,"\e908" );
+@include makeIcon(noun_1175157,"\e909" );
+
+

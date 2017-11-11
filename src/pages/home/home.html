@@ -1,14 +1,78 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="color-cheng">
+    <ion-title class='ion-title'>
+      快递查询
     </ion-title>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="mycontent">
+  <form class="animated lightSpeedIn">
+    <ion-list>
+      <ion-item>
+        <ion-label inset>快递公司</ion-label>
+        <ion-select [(ngModel)]="com" multiple="false" name="com"  tappable>
+          <ion-option value="ems">EMS</ion-option>
+          <ion-option value="zto">中通</ion-option>
+          <ion-option value="sf" selected="true">顺丰</ion-option>
+          <ion-option value="sto">申通</ion-option>
+          <ion-option value="yt">圆通</ion-option>
+          <ion-option value="yd">韵达</ion-option>
+          <ion-option value="tt">天天</ion-option>
+          <ion-option value="ht">汇通</ion-option>
+          <ion-option value="qf">全峰</ion-option>
+          <ion-option value="db">德邦</ion-option>
+          <ion-option value="rfd">如风达</ion-option>
+          <ion-option value="jd">京东快递</ion-option>
+          <ion-option value="zjs">宅急送</ion-option>
+          <ion-option value="emsg">EMS国际</ion-option>
+          <ion-option value="fedex">Fedex国际</ion-option>
+          <ion-option value="yzgn">邮政国内（挂号信）</ion-option>
+          <ion-option value="ups">UPS国际快递</ion-option>
+          <ion-option value="ztky">中铁快运</ion-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+  
+       <ion-label inset>快递单号</ion-label>
+        <ion-input type="text" [(ngModel)]="no" name="no">
+
+        </ion-input>
+        <button *ngIf="no" clear ion-button icon-only item-end (click)="clearNum()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        
+      </ion-item>
+    </ion-list>
+    <button round ion-button color="primary" full type="submit" (click)="searchDelivery()">查询</button>
+  </form>
+  <ion-card *ngIf="delivery.isDone" class="animated fadeInDown">
+      <ion-card-header class="card">
+        <h3><strong>包裹信息</strong></h3>
+      </ion-card-header>
+      <ion-card-content class="mycard">
+        <ion-grid>
+          <ion-row class="space"   *ngFor="let res of delivery.list.reverse() ">
+            <ion-col col-5>
+              <ion-row>
+                <ion-col class="modify" >{{res.datetime.substring(0,10)}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col  class="dd-time">{{res.datetime.substring(11,16)}}</ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col class="info"  col-7>{{res.remark | deleteCapital}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-card *ngIf="!delivery.isDone&&clicked">
+      <ion-card-header class="card">
+        没有包裹信息
+      </ion-card-header>
+    </ion-card>
+
 </ion-content>
